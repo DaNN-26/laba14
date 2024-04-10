@@ -1,18 +1,19 @@
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        //String str = "Привет ::0db8:85A3::::: hello 345";
-        Scanner input = new Scanner(System.in);
-        String str = input.nextLine();
-        Pattern pat = Pattern.compile("(::)?((\\d\\d\\d\\d|\\d\\d\\d[a-fA-F]|\\d\\d[a-fA-F]\\d|\\d[a-fA-F][a-fA-F]\\d\\d|[a-fA-F]\\d\\d\\d:|\\d\\d[a-fA-F][a-fA-F]|\\d[a-fA-F][a-fA-F]\\d|[a-fA-F][a-fA-F]\\d\\d|\\d[a-fA-F]\\d[a-fA-F]|[a-fA-F]\\d[a-fA-F]\\d|[a-fA-F]\\d\\d[a-fA-F]|[a-fA-F][a-fA-F][a-fA-F]\\d|[a-fA-F]\\d[a-fA-F][a-fA-F]|[a-fA-F][a-fA-F]\\d[a-fA-F]|\\d[a-fA-F][a-fA-F][a-fA-F]|[a-fA-F][a-fA-F][a-fA-F][a-fA-F]):){3,7}(\\d\\d\\d\\d|\\d\\d\\d[a-fA-F]|\\d\\d[a-fA-F]\\d|\\d[a-fA-F][a-fA-F]\\d\\d|[a-fA-F]\\d\\d\\d:|\\d\\d[a-fA-F][a-fA-F]|\\d[a-fA-F][a-fA-F]\\d|[a-fA-F][a-fA-F]\\d\\d|\\d[a-fA-F]\\d[a-fA-F]|[a-fA-F]\\d[a-fA-F]\\d|[a-fA-F]\\d\\d[a-fA-F]|[a-fA-F][a-fA-F][a-fA-F]\\d|[a-fA-F]\\d[a-fA-F][a-fA-F]|[a-fA-F][a-fA-F]\\d[a-fA-F]|\\d[a-fA-F][a-fA-F][a-fA-F]|[a-fA-F][a-fA-F][a-fA-F][a-fA-F])(::)?");
+        File file = new File("D://ip.txt");
+        String str = "Привет, 192.234.121.211 Тебя взломали!))";
+        Pattern pat = Pattern.compile("(([1-9]\\d\\d|2[0-4]\\d|25[0-5]|\\d)\\.){3}(//d|[1-9]\\d\\d|2[0-4]\\d|25[0-5])");
 
         Matcher match = pat.matcher(str);
-        if(match.find())
-            System.out.println("IP-адрес: " + match.group());
+        if (match.find())
+           System.out.println("IP-адрес: " + match.group());
         else
-            System.out.println("Ошибка: в строке не найдено IP-адресов");
+            System.out.println("IP-адресов не найдено");
     }
 }
